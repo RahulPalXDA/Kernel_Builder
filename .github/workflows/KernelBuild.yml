@@ -1,0 +1,32 @@
+name: Kernel Build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+       - name: Configuring git environment.
+         run: |
+            git config --global user.name RahulPalXDA
+            git config --global user.email RahulPal.XDA@gmail.com
+            git config --global core.editor nano
+            sudo -E apt-get -qq update && sudo -E apt-get -qq upgrade
+            sudo -E apt-get -qq install bc python2 python3 python-is-python3
+
+       - name: Building Kernel.
+         run: |
+             git clone --depth=1 --recurse-submodules https://github.com/ModageOS/android_kernel_xiaomi_sm6125.git -b lineage-18.1-ksu temporary
+             cd temporary
+             export KBUILD_BUILD_USER=RahulPalXDA
+             export KBUILD_BUILD_HOST=LazyBox
+             curl https://raw.githubusercontent.com/GinkgoHub/Kernel_Builder/ginkgo-perf/kernelbuild.sh >> kernelbuild.sh
+             chmod 777 kernelbuild.sh
+             ./kernelbuild.sh
+
+       - name: Uploading to temp.sh.
+         run: |
+             cd temporary/AnyKernel3
+             curl -T ginkgo-perf.zip temp.sh && echo ""
