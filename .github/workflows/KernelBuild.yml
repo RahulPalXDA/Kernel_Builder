@@ -18,11 +18,11 @@ jobs:
 
        - name: Building Kernel.
          run: |
-             git clone --depth=1 --recurse-submodules https://github.com/ModageOS/android_kernel_xiaomi_sm6125.git -b lineage-18.1-ksu temporary
+             git clone --depth=1 https://github.com/crdroidandroid/android_kernel_xiaomi_ginkgo.git -b 13.0-old temporary
              cd temporary
              export KBUILD_BUILD_USER=RahulPalXDA
              export KBUILD_BUILD_HOST=LazyBox
-             curl https://raw.githubusercontent.com/GinkgoHub/Kernel_Builder/ginkgo-perf/kernelbuild.sh >> kernelbuild.sh
+             curl https://raw.githubusercontent.com/GinkgoHub/Kernel_Builder/ginkgo-QuicksilveR/kernelbuild.sh >> kernelbuild.sh
              chmod 777 kernelbuild.sh
              ./kernelbuild.sh
 
