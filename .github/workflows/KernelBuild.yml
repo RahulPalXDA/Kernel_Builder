@@ -29,4 +29,4 @@ jobs:
        - name: Uploading to temp.sh.
          run: |
              cd temporary/AnyKernel3
-             curl -T ginkgo-perf.zip temp.sh && echo ""
+             curl -T ginkgo-QuicksilveR.zip temp.sh && echo ""
