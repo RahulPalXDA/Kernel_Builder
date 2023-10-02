@@ -19,4 +19,5 @@ jobs:
        - name: Uploading.
          run: |
              wget https://releases.ubuntu.com/22.04.3/ubuntu-22.04.3-desktop-amd64.iso
+             echo "a435f6f393dda581172490eda9f683c32e495158a780b5a1de422ee77d98e909 *ubuntu-22.04.3-desktop-amd64.iso" | shasum -a 256 --check
              curl -T "ubuntu-22.04.3-desktop-amd64.iso" https://pixeldrain.com/api/file/
